@@ -1,0 +1,35 @@
+5 Modules
+File Module
+This module prompts the user to select a particular location within the system, a location from 
+which the user wants to extract the data from the files present in that particular directory.
+
+Extraction Module
+This module is responsible for extracting data from the files of different types from the location 
+mentioned by the user through the File Module. The module checks the type of each file using 
+a for each method. After confirming the file type, the module applies the specified technique 
+for data extraction as mentioned in its workflow. For e.g., OCR Engine method for extracting 
+data from PDF and Image files, REGEX for extracting data from text file or xml files or json 
+files and using Excel methods (present in UI Path) to extract data from excel files. After 
+extracting the data from the file using the file specific technique for data extraction the 
+workflow/module stores all the data extracted in a unified excel workbook for further data 
+loading.
+
+Loader Module. 
+This module is responsible for migration data from the unified excel 
+workbook to the cloud storage via a web portal interface which is hostel online/locally. Using 
+Excel workbook read activities (UI Path) the module reads the data row wise and stores it inside 
+a data table variable. Using Web Recording activities (UI Path) the module loads the data 
+present in the data table variable under the specified tag into the web portal which uses MySQL 
+database as its backend. The web portal uses HTML5, CSS3 and ExpressJS for its frontend and 
+backend consists of MySQL database applied using NodeJS. The module first opens the web 
+portal in the browser application and first identifies the label and enters the appropriate data 
+from the data table variable in the input form under each label and once all input forms are 
+filled the submit button clicked. On clicking the button, the inputted data is converted into an 
+RDBMS insert query by ExpressJS and is sent to the database for insertion, similar steps are 
+followed for record searching process. Hence the module iterates through all the excel data 
+ranges and transfers the data to cloud storage via the web portal with the help of Web Recording 
+functionality of UI Path. 
+
+
+
+
